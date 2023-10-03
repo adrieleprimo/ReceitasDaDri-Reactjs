@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import InformacaoDaReceita from './InformacaoDaReceita';
 
 export default function ListaDeReceitas() {
   const [receitas, setReceitas] = useState([]);
@@ -20,14 +21,15 @@ export default function ListaDeReceitas() {
     buscarReceitas();
   }, []);
 
+
   return (
-    <div>
-      <h2>Receitas: </h2>
+    <div> 
       <ul className="lista-de-receitas">
         {receitas.map((receita) => (
           <li key={receita.idMeal}>
             <img src={receita.strMealThumb} alt={receita.strMeal} />
             <h3>{receita.strMeal}</h3>
+            <InformacaoDaReceita receita={receita} />
           </li>
         ))}
       </ul>
